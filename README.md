@@ -3,7 +3,7 @@ Job Hunter
 Created by Dharak Vasavda (d_vasavda@u.pacific.edu) and Nathan Luu (n_luu1@u.pacific.edu)
 
 
-Aggregating multiple job hunting websites into one. Taking job hunting websites such as LinkedIn and Indeed.com, and placing it into one universal ssearch engine.
+Aggregating multiple job hunting websites into one. Taking job hunting websites such as LinkedIn and Indeed.com, and placing it into one universal search engine.
 
 This project will use:
 
