@@ -10,3 +10,13 @@ This project will use:
 - React (Javascript Framework) as the end-user interaction
 - MSSQL Server as the database storage for job information
 - Python will interact with the APIs on the job hunting website to gather the right data
+
+
+Resources used in project:
+https://github.com/ozgur/python-linkedin
+
+
+## Understanding the file structure:
+
+linkedin.py - web scraper for LinkedIn which will acquire profile data. An account owned by the project owners will be used to request login.
+linkedin_data.json - organizes the scraped web data into this json file
