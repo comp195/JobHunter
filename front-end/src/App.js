@@ -1,13 +1,16 @@
 import React from "react";
-import "./App.css";
+import { Button, Box } from "@material-ui/core/";
+import SlideOutMenu from "./SlideOutMenu";
 
 function App() {
   return (
-    <div className="App">
-      {/* Side menu */}
-
+    <Box>
+      <SlideOutMenu />
       <h1>JobHunter</h1>
-    </div>
+      <Button color="primary" variant="contained">
+        Get Started
+      </Button>
+    </Box>
   );
 }
 
