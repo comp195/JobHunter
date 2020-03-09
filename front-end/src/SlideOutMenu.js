@@ -24,7 +24,7 @@ export default function SlideOutMenu() {
       onKeyDown={toggleDrawer(side, false)}
     >
       <List>
-        {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
+        {["Home", "Starred", "Settings"].map((text, index) => (
           <ListItem button key={text}>
             <ListItemIcon>
               {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
@@ -52,6 +52,7 @@ export default function SlideOutMenu() {
       <IconButton onClick={toggleDrawer("left", true)}>
         <ViewHeadlineIcon />
       </IconButton>
+
       <Drawer open={state.left} onClose={toggleDrawer("left", false)}>
         {sideList("left")}
       </Drawer>
