@@ -13,7 +13,10 @@ This project will use:
 
 
 Resources used in project:
+
 https://github.com/ozgur/python-linkedin
+
+https://www.scrapehero.com/tutorial-scraping-linkedin-for-public-company-data/
 
 
 ## Understanding the file structure:
