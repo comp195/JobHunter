@@ -18,6 +18,8 @@ https://github.com/ozgur/python-linkedin
 
 https://www.scrapehero.com/tutorial-scraping-linkedin-for-public-company-data/
 
+https://github.com/ozgur/python-linkedin
+
 
 ## Understanding the file structure:
 
