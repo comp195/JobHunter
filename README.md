@@ -8,8 +8,9 @@ Aggregating multiple job hunting websites into one. Taking job hunting websites 
 This project will use:
 
 - React (Javascript Framework) as the end-user interaction
-- MSSQL Server as the database storage for job information
-- Python will interact with the APIs on the job hunting website to gather the right data
+- MSSQL Server as the database storage of job information
+- (Possibly) CSV for result storage of job information
+- Python will scrape the webpages and write out all data to the chosen storage solution
 
 
 Resources used in project:
@@ -23,6 +24,7 @@ https://github.com/ozgur/python-linkedin
 
 ## Understanding the file structure:
 
-linkedin.py - web scraper for LinkedIn which will acquire profile data. An account owned by the project owners will be used to request login.
+indeed.com - contains all web scraping and scraped data for indeed.com
 
-linkedin_data.json - organizes the scraped web data into this json file
+    > indeed.py - handles the scraping
+    > jobs.csv - contains all scraped data for indeed.com
