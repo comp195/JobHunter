@@ -1,4 +1,11 @@
-# Template source: https://github.com/charissayj/Job-Scraper/blob/master/jobs.py
+"""
+Template source: https://github.com/charissayj/Job-Scraper/blob/master/jobs.py
+
+Usage: python3 indeed.py
+
+Functionality: When python file is ran, it updates jobs.csv with the latest search results
+"""
+
 
 from bs4 import BeautifulSoup as soup
 from urllib.request import urlopen as uReq
@@ -6,19 +13,32 @@ import re
 import ssl
 
 
+
+##################################
+# Search helper
+##################################
+# TODO: change search and location to command line arguments
 # Searches which the user will interact with
 search = 'Computer science'
-location = 'San Jose'
+location = '95050'
 
-# Split the string into usable
-parsed_search = ''
-parsed_location = ''
+# Replace spaces with +
+parsed_search = search.replace(' ', '+')
+parsed_location = location.replace(' ', '+')
 
 # Give scraper URL to work with
-jobs_url = 'https://www.indeed.com/jobs?q=computer+science&l=95050'
+# original URL Example:
+#   jobs_url = 'https://www.indeed.com/jobs?q=computer+science&l=san+jose'
+
+jobs_url = ('https://www.indeed.com/jobs?q=' + parsed_search + '&l=' + parsed_location)
 
 
+print('Scraping data from URL: ' + jobs_url)
 
+
+##################################
+# Data and web connectors
+##################################
 # opening connection and grabbing the page
 uClient = uReq(jobs_url)
 page_html = uClient.read()
@@ -34,26 +54,46 @@ results = soup.find_all('div', {'class': 'result'})
 filename = "jobs.csv"
 f = open(filename, "w")
 
-headers = "Title, Company, Location, Experience, Link \n"
+headers = "Title, Company, City, State, Days Ago Posted, Link \n"
 
 f.write(headers)
 
 
 
-# Data Scraping
+##################################
+# Web Scraping and file writeout
+##################################
 for i in results:
+    # Job Title
     job_title = i.find('a', {'data-tn-element': 'jobTitle'})['title']
+
+    # Company Name
     company_name = i.find('span', {'class': 'company'}).text.strip()
-    job_summary = ''.join([j.text.strip() for j in i.find_all('span',
-                                                            {'class': 'summary'})])
 
-    location = i.find('span', {'class': 'location'})
-    if location is not None:
-        location = location.text.strip()
+    # Location
+    # Wrapped within 1 div
+    for location_search in soup.find_all('div', attrs={'class': 'sjcl'}):
+        location = location_search.find('div', attrs={'class': 'location accessible-contrast-color-location'})
+        if location is not None:
+            location = location.text.strip()
 
-    salary_range = i.find('span', {'class': 'no-wrap'})
-    if salary_range is not None:
-        salary_range = salary_range.text.strip()
+    # Days Ago posted
+    # Wrapped within 4 divs
+    # TODO: Speed this up
+    # for div1 in soup.find_all('div', attrs={'class': 'jobsearch-SerpJobCard-footer'}):
+    #     for div2 in soup.find_all('div', attrs={'class': 'jobsearch-SerpJobCard-footerActions'}):
+    #         for div3 in soup.find_all('div', attrs={'class': 'result-link-bar-container'}):
+    #             for div4 in soup.find_all('div', attrs={'class': 'result-link-bar'}):
+    #                 days_ago_posted = div4.find('div', attrs={'class': 'date '})
+    #                 if days_ago_posted is not None:
+    #                     days_ago_posted = days_ago_posted.text.strip()
+
+
+    # Link to Job entry
+    # link = results.i['href']
+    # job_link = ("https://www.indeed.com" + link)
+
+
 
     # Optional: write all data out to an array
     # data = []
@@ -69,8 +109,12 @@ for i in results:
 
     f.write(job_title + ', ')
     f.write(company_name + ', ')
-    f.write(job_summary + ', ')
-    # f.write(location + '\n')
+    # f.write(job_summary + ', ')
+    f.write(location + ', ')
+    # f.write(days_ago_posted + ', ')
+    # f.write(job_link + '\n')
     f.write('\n')
+
+
 
 f.close()
