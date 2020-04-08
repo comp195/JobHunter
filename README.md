@@ -3,7 +3,7 @@ Job Hunter
 Created by Dharak Vasavda (d_vasavda@u.pacific.edu) and Nathan Luu (n_luu1@u.pacific.edu)
 
 
-Aggregating multiple job hunting websites into one. Taking job hunting websites such as LinkedIn and Indeed.com, and placing it into one universal search engine.
+Aggregating multiple job hunting websites into one. Taking job hunting websites such as indeed.com, and placing it into one universal search engine.
 
 This project will use:
 
@@ -20,6 +20,9 @@ https://github.com/ozgur/python-linkedin
 https://www.scrapehero.com/tutorial-scraping-linkedin-for-public-company-data/
 
 https://github.com/ozgur/python-linkedin
+
+
+https://www.codediesel.com/data/quick-way-to-display-csv-files-as-html-tables/
 
 
 ## Understanding the file structure:

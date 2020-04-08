@@ -54,7 +54,7 @@ results = soup.find_all('div', {'class': 'result'})
 filename = "jobs.csv"
 f = open(filename, "w")
 
-headers = "Title, Company, City, State, Days Ago Posted, Link \n"
+headers = "Title, Company, City, State, Link \n"
 
 f.write(headers)
 
