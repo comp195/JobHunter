@@ -16,8 +16,6 @@ Where:
     <location> can be a string as a city and/or state (San jose, CA) or an int as a zip code (95050)
 '''
 
-from scrapers.indeed_com import indeed
-from scrapers.monster_com import monster
 import os
 import subprocess
 import argparse
@@ -35,9 +33,6 @@ args = parser.parse_args()
 search_term = args.searchterm
 location = args.location
 
-print(search_term)
-print(location)
-
 
 # Initialize path for scrapers
 # Get current working directory
@@ -51,8 +46,13 @@ subprocess.Popen('chmod +x ' + monster_path, shell=True)
 
 print('Scraping all data now...\n')
 
+# Add quotes to the string
+quotes = '"'
+
 # Run shell prompt to run the python files
-os.system('{} {}'.format('python3', indeed_path))
+
+os.system('{} {} {} {} {} {} {} {} {} {} {}'.format('python3', indeed_path, ' --searchterm ', " ", quotes, search_term, quotes, ' --location ', quotes, location, quotes))
 print('\n')
-os.system('{} {}'.format('python3', monster_path))
+
+os.system('{} {} {} {} {} {} {} {} {} {} {}'.format('python3', monster_path, ' --searchterm ', " ", quotes, search_term, quotes, ' --location ', quotes, location, quotes))
 print('\n')
