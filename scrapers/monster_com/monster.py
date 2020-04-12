@@ -9,6 +9,7 @@ Functionality: When python file is ran, it updates jobs.csv with the latest sear
 
 from bs4 import BeautifulSoup as soup
 from urllib.request import urlopen as uReq
+import os.path as path
 import re
 import ssl
 import requests
@@ -49,15 +50,16 @@ uClient.close()
 # html parsing
 soup = soup(page_html, 'html.parser')
 
-#grab all divs with a class of row
+# grab all divs with a class of row
 jobs_container = soup.find(id='ResultsContainer')
-
 
 job_items = jobs_container.find_all('section', class_='card-content')
 
-
 # print(len(results))
-filename = "jobs.csv"
+
+# Need to specify absolute path to work with scrape_all.py
+two_dir_up = path.abspath(path.join(__file__ ,"../.."))
+filename = two_dir_up + '/monster_com/jobs.csv'
 f = open(filename, "w")
 
 headers = "Title | Company | Location | Link \n"
@@ -107,6 +109,6 @@ for i in job_items:
     f.write('\n')
 
 
-print('monster.com - Finished scraping')
+print('monster.com - Finished scraping data. Results were placed in /scrapers/monster.com/jobs.csv')
 
 f.close()
