@@ -33,7 +33,7 @@ parsed_location = location.replace(' ', '+')
 jobs_url = ('https://www.indeed.com/jobs?q=' + parsed_search + '&l=' + parsed_location)
 
 
-print('Scraping data from URL: ' + jobs_url)
+print('Scraping data from Indeed.com URL: ' + jobs_url)
 
 
 ##################################
@@ -72,6 +72,7 @@ for i in results:
 
     # Location
     # Wrapped within 1 div
+    # TODO: Fix this
     for location_search in soup.find_all('div', attrs={'class': 'sjcl'}):
         location = location_search.find('div', attrs={'class': 'location accessible-contrast-color-location'})
         if location is not None:
@@ -107,14 +108,15 @@ for i in results:
 
     # data.append(datum)
 
-    f.write(job_title + ', ')
-    f.write(company_name + ', ')
+    f.write(job_title + ',')
+    f.write(company_name + ',')
     # f.write(job_summary + ', ')
-    f.write(location + ', ')
+    f.write(location + ',')
     # f.write(days_ago_posted + ', ')
     # f.write(job_link + '\n')
     f.write('\n')
 
 
+print('indeed.com - Finished scraping')
 
 f.close()

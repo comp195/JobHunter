@@ -24,6 +24,7 @@ https://github.com/ozgur/python-linkedin
 
 https://www.codediesel.com/data/quick-way-to-display-csv-files-as-html-tables/
 
+https://ermir.net/topic-15/web-scraping-indeed-and-monster-job-portals-using-python
 
 ## Understanding the file structure:
 
