@@ -60,7 +60,7 @@ job_items = jobs_container.find_all('section', class_='card-content')
 filename = "jobs.csv"
 f = open(filename, "w")
 
-headers = "Title, Company, City, State, Link \n"
+headers = "Title | Company | Location | Link \n"
 
 f.write(headers)
 
@@ -100,10 +100,10 @@ for i in job_items:
 
 
     # Output all data to jobs.csv
-    f.write(item.get("Title", "") + ',')
-    f.write(item.get("Company", "") + ',')
-    f.write(item.get("Location", "") + ',')
-    f.write(item.get("Link", "") + ',')
+    f.write(item.get("Title", "") + ' | ')
+    f.write(item.get("Company", "") + ' | ')
+    f.write(item.get("Location", "") + ' | ')
+    f.write(item.get("Link", ""))
     f.write('\n')
 
 

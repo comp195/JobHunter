@@ -54,7 +54,7 @@ results = soup.find_all('div', {'class': 'result'})
 filename = "jobs.csv"
 f = open(filename, "w")
 
-headers = "Title, Company, City, State, Link \n"
+headers = "Title | Company | Location | Link \n"
 
 f.write(headers)
 
@@ -71,29 +71,22 @@ for i in results:
     company_name = i.find('span', {'class': 'company'}).text.strip()
 
     # Location
-    # Wrapped within 1 div
-    # TODO: Fix this
-    for location_search in soup.find_all('div', attrs={'class': 'sjcl'}):
-        location = location_search.find('div', attrs={'class': 'location accessible-contrast-color-location'})
-        if location is not None:
-            location = location.text.strip()
-
-    # Days Ago posted
-    # Wrapped within 4 divs
-    # TODO: Speed this up
-    # for div1 in soup.find_all('div', attrs={'class': 'jobsearch-SerpJobCard-footer'}):
-    #     for div2 in soup.find_all('div', attrs={'class': 'jobsearch-SerpJobCard-footerActions'}):
-    #         for div3 in soup.find_all('div', attrs={'class': 'result-link-bar-container'}):
-    #             for div4 in soup.find_all('div', attrs={'class': 'result-link-bar'}):
-    #                 days_ago_posted = div4.find('div', attrs={'class': 'date '})
-    #                 if days_ago_posted is not None:
-    #                     days_ago_posted = days_ago_posted.text.strip()
+    location_search = i.find('div', attrs={'class': 'location accessible-contrast-color-location'})
+    if location_search is not None:
+            location = location_search.text.strip()
 
 
-    # Link to Job entry
-    # link = results.i['href']
-    # job_link = ("https://www.indeed.com" + link)
+    # Job Link
+    url_elem = i.find('a', {'target': '_blank'})
 
+    # get the href of this listing
+    # the format will be such as '/pagead/' which will later need to be concatenated
+    # with 'indeed.com'
+    href = url_elem.get('href')
+    if href is None:
+        continue
+
+    job_link = 'https://www.indeed.com' + href
 
 
     # Optional: write all data out to an array
@@ -108,12 +101,12 @@ for i in results:
 
     # data.append(datum)
 
-    f.write(job_title + ',')
-    f.write(company_name + ',')
+    f.write(job_title + ' | ')
+    f.write(company_name + ' | ')
     # f.write(job_summary + ', ')
-    f.write(location + ',')
+    f.write(location + ' | ')
+    f.write(job_link)
     # f.write(days_ago_posted + ', ')
-    # f.write(job_link + '\n')
     f.write('\n')
 
 
