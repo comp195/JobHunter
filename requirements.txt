@@ -1,0 +1,4 @@
+lxml
+requests
+python-docx
+beautifulsoup4
