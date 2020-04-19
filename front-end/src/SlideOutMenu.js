@@ -52,7 +52,6 @@ export default function SlideOutMenu() {
       <IconButton onClick={toggleDrawer("left", true)}>
         <ViewHeadlineIcon />
       </IconButton>
-
       <Drawer open={state.left} onClose={toggleDrawer("left", false)}>
         {sideList("left")}
       </Drawer>
