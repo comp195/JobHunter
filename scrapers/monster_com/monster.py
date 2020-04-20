@@ -91,7 +91,7 @@ two_dir_up = path.abspath(path.join(__file__ ,"../.."))
 filename = two_dir_up + '/monster_com/jobs.csv'
 f = open(filename, "w")
 
-headers = "Title | Company | Location | Link \n"
+headers = "Title, Company, Location, Link \n"
 
 f.write(headers)
 
@@ -135,9 +135,9 @@ for i in job_items:
 
 
     # Output all data to jobs.csv
-    f.write(item.get("Title", "") + ' | ')
-    f.write(item.get("Company", "") + ' | ')
-    f.write(item.get("Location", "") + ' | ')
+    f.write(item.get("Title", "") + ', ')
+    f.write(item.get("Company", "") + ', ')
+    f.write(item.get("Location", "") + ', ')
     f.write(item.get("Link", ""))
     f.write('\n')
 

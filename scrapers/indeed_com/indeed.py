@@ -83,7 +83,7 @@ two_dir_up = path.abspath(path.join(__file__ ,"../.."))
 filename = two_dir_up + '/indeed_com/jobs.csv'
 f = open(filename, "w")
 
-headers = "Title | Company | Location | Link \n"
+headers = "Title, Company, Location, Link \n"
 
 f.write(headers)
 
@@ -132,10 +132,10 @@ for i in results:
 
     # data.append(datum)
 
-    f.write(job_title + ' | ')
-    f.write(company_name + ' | ')
+    f.write(job_title + ', ')
+    f.write(company_name + ', ')
     # f.write(job_summary + ', ')
-    f.write(location + ' | ')
+    f.write(location + ', ')
     f.write(job_link)
     # f.write(days_ago_posted + ', ')
     f.write('\n')
