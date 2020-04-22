@@ -91,7 +91,7 @@ two_dir_up = path.abspath(path.join(__file__ ,"../.."))
 filename = two_dir_up + '/monster_com/jobs.csv'
 f = open(filename, "w")
 
-headers = "Title | Company | Location | Link \n"
+headers = "Title, Company, Location, Link \n"
 
 f.write(headers)
 
@@ -121,10 +121,20 @@ for i in job_items:
     if href is None:
         continue
 
+    # Strip all text
+    stripped_title = title_elem.text.strip()
+    stripped_company = company_elem.text.strip()
+    stripped_location= location_elem.text.strip()
+
+    # Remove commas from all entries to remove interference with delimiter
+    stripped_title = stripped_title.replace(',', '')
+    stripped_company = stripped_company.replace(',', '')
+    stripped_location = stripped_location.replace(',', '')
+
     item = {
-        "Title" : title_elem.text.strip(),
-        "Company" : company_elem.text.strip(),
-        "Location" : location_elem.text.strip(),
+        "Title" : stripped_title,
+        "Company" :stripped_company,
+        "Location" : stripped_location,
         "Link" : href,
         # "description" : "",
         # "description_text" : ""
@@ -135,9 +145,9 @@ for i in job_items:
 
 
     # Output all data to jobs.csv
-    f.write(item.get("Title", "") + ' | ')
-    f.write(item.get("Company", "") + ' | ')
-    f.write(item.get("Location", "") + ' | ')
+    f.write(item.get("Title", "") + ', ')
+    f.write(item.get("Company", "") + ', ')
+    f.write(item.get("Location", "") + ', ')
     f.write(item.get("Link", ""))
     f.write('\n')
 
