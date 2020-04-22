@@ -1,4 +1,6 @@
 lxml
 requests
 python-docx
+python-csv
+urllib3
 beautifulsoup4
