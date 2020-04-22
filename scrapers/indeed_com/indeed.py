@@ -120,6 +120,12 @@ for i in results:
     job_link = 'https://www.indeed.com' + href
 
 
+    # Remove commas from all entries to remove interference with delimiter
+    location = location.replace(',', '')
+    company_name = company_name.replace(',', '')
+    job_title = job_title.replace(',', '')
+
+
     # Optional: write all data out to an array
     # data = []
 
