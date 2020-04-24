@@ -83,7 +83,7 @@ two_dir_up = path.abspath(path.join(__file__ ,"../.."))
 filename = two_dir_up + '/indeed_com/jobs.csv'
 f = open(filename, "w")
 
-headers = "Title, Company, Location, Link \n"
+headers = "Title,Company,Location,Link\n"
 
 f.write(headers)
 
@@ -124,6 +124,9 @@ for i in results:
     location = location.replace(',', '')
     company_name = company_name.replace(',', '')
     job_title = job_title.replace(',', '')
+
+    # Capitalize first letter of job title words for consistency
+    job_title = job_title.title()
 
 
     # Optional: write all data out to an array
