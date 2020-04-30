@@ -4,7 +4,7 @@ Aggregating multiple job hunting websites into one. Taking job hunting websites 
 
 Created by Dharak Vasavda (d_vasavda@u.pacific.edu) and Nathan Luu (n_luu1@u.pacific.edu)
 
-# Link to App Website:
+# Link to App Website (Live Build):
 https://bit.ly/2VQZzfC
 
 #
