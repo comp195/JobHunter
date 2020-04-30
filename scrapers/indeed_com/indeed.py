@@ -83,9 +83,10 @@ two_dir_up = path.abspath(path.join(__file__ ,"../.."))
 filename = two_dir_up + '/indeed_com/jobs.csv'
 f = open(filename, "w")
 
-headers = "Title,Company,Location,Link\n"
+# No longer need header as it is written by scrape_all.py
+# headers = "Title,Company,Location,Link,JobSource\n"
 
-f.write(headers)
+# f.write(headers)
 
 
 
@@ -145,7 +146,8 @@ for i in results:
     f.write(company_name + ', ')
     # f.write(job_summary + ', ')
     f.write(location + ', ')
-    f.write(job_link)
+    f.write(job_link + ', ')
+    f.write('Indeed')
     # f.write(days_ago_posted + ', ')
     f.write('\n')
 

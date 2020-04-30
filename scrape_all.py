@@ -19,7 +19,8 @@ Where:
 import os
 import subprocess
 import argparse
-
+import random
+import csv
 
 # Get command line arguments
 parser = argparse.ArgumentParser(description='Scrape from all data sources and update their .csv files.\n')
@@ -39,6 +40,10 @@ location = args.location
 cwd = os.path.dirname(os.path.realpath(__file__))
 indeed_path = (cwd + '/scrapers/indeed_com/indeed.py')
 monster_path = (cwd + '/scrapers/monster_com/monster.py')
+indeed_csv_path = (cwd + '/scrapers/indeed_com/jobs.csv')
+monster_csv_path = (cwd + '/scrapers/monster_com/jobs.csv')
+allJobs_csv_path = (cwd + '/front-end/src/csv/allJobs.csv') # Where both .csv files will be combined
+
 
 # Gain elevated user permissions to call files
 subprocess.Popen('chmod +x ' + indeed_path, shell=True)
@@ -46,13 +51,53 @@ subprocess.Popen('chmod +x ' + monster_path, shell=True)
 
 print('Scraping all data now...\n')
 
+
 # Add quotes to the string
 quotes = '"'
 
-# Run shell prompt to run the python files
 
+# Run shell prompt to run the python files
 os.system('{} {} {} {} {} {} {} {} {} {} {}'.format('python3', indeed_path, ' --searchterm ', " ", quotes, search_term, quotes, ' --location ', quotes, location, quotes))
 print('\n')
 
 os.system('{} {} {} {} {} {} {} {} {} {} {}'.format('python3', monster_path, ' --searchterm ', " ", quotes, search_term, quotes, ' --location ', quotes, location, quotes))
 print('\n')
+
+
+# Combine both jobs.csv files
+print('Combining both jobs.csv files now...\n')
+
+reader = csv.reader(open(indeed_csv_path))
+reader1 = csv.reader(open(monster_csv_path))
+f = open(allJobs_csv_path, "w")
+writer = csv.writer(f)
+
+for row in reader:
+    writer.writerow(row)
+for row in reader1:
+    writer.writerow(row)
+
+f.close()
+
+
+# Randomize both CSV files' lines
+print('Randomizing lines of jobs.csv now...\n')
+
+with open(allJobs_csv_path,'r') as source:
+    data = [ (random.random(), line) for line in source ]
+data.sort()
+with open(allJobs_csv_path,'w') as target:
+    for _, line in data:
+        target.write( line )
+
+
+# Re-write header to randomize
+header = "Title,Company,Location,Link,JobSource\n"
+
+with open(allJobs_csv_path) as f:
+    lines = f.readlines() #read
+
+lines[0] = header # Write to line 1
+
+with open(allJobs_csv_path, "w") as f:
+    f.writelines(lines) # Write back
