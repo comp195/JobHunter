@@ -91,9 +91,12 @@ two_dir_up = path.abspath(path.join(__file__ ,"../.."))
 filename = two_dir_up + '/monster_com/jobs.csv'
 f = open(filename, "w")
 
-headers = "Title,Company,Location,Link\n"
+# No longer need headers
+# in scrape_all.py, both jobs.csv files will be combined and only 1 header needs
+# to be written. Indeed.py will write those
+# headers = "Title,Company,Location,Link,JobSource\n"
 
-f.write(headers)
+# f.write(headers)
 
 # all_jobs = []
 
@@ -151,7 +154,8 @@ for i in job_items:
     f.write(item.get("Title", "") + ', ')
     f.write(item.get("Company", "") + ', ')
     f.write(item.get("Location", "") + ', ')
-    f.write(item.get("Link", ""))
+    f.write(item.get("Link", "") + ', ')
+    f.write('Monster')
     f.write('\n')
 
 
