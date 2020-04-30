@@ -7,3 +7,6 @@ The test results are divided into two components:
 For the Python component, a script is written to automatically test whether all of the edge cases pass or not.
 All that is needed is to run the python file and it will automatically call system commands with edge cases to see
 whether or not they work.
+
+For the React component, the website only takes input from the CSV files so the CSV cannot be read the website 
+will not display anything and report to the user that the website could not have been scraped.
