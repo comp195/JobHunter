@@ -7,7 +7,7 @@ import * as d3 from "d3";
 import monsterFile from "./csv/monster_jobs.csv";
 import indeedFile from "./csv/indeed_jobs.csv";
 import allFile from "./csv/allJobs.csv";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {
   const [data, setData] = useState([]);

@@ -11,7 +11,7 @@ export default function JobCard({ jobData }) {
   const StylesCard = {
     backgroundColor: "#e6e6fa",
     margin: "1%",
-    marginLeft: "26%",
+    marginLeft: "28%",
     color: "black",
     border: "3px solid #e1e1f9",
     width: "45%",
