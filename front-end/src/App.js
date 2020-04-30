@@ -9,38 +9,21 @@ import indeedFile from "./csv/indeed_jobs.csv";
 import allFile from "./csv/allJobs.csv";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
-// function Home() {
-//   return <h2>Home</h2>;
-// }
-
-// function About() {
-//   return <h2>About</h2>;
-// }
-
-// function Users() {
-//   return <h2>Users</h2>;
-// }
-
 function App() {
-  // const styles = useStyles();
   const [data, setData] = useState([]);
   const [indeed, setIndeed] = useState([]);
   const [monster, setMonster] = useState([]);
-  const [type, setType] = useState("");
 
   useEffect(() => {
-    // d3.csv(indeedFile).then(setData);
-    // d3.csv(monsterFile).then(setData);
-    // d3.csv(allFile).then(setData);
-    Promise.all([d3.csv(allFile), d3.csv(monsterFile), d3.csv(indeedFile)])
-      .then(function (files) {
-        setData(files[0]);
-        setMonster(files[1]);
-        setIndeed(files[2]);
-      })
-      .catch(function (err) {
-        // handle error here
-      });
+    Promise.all([
+      d3.csv(allFile),
+      d3.csv(monsterFile),
+      d3.csv(indeedFile),
+    ]).then(function (files) {
+      setData(files[0]);
+      setMonster(files[1]);
+      setIndeed(files[2]);
+    });
   }, []);
 
   return (
