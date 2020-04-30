@@ -4,23 +4,34 @@ import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import { makeStyles } from "@material-ui/core";
+// import { makeStyles } from "@material-ui/core";
 
-const useStyles = makeStyles((theme) => ({
-  card: {
+// const useStyles = makeStyles((theme) => ({
+//   card: {},
+// }));
+
+export default function JobCard({ jobData, color }) {
+  const indeedStylesCard = {
+    borderColor:"Blue",
     backgroundColor: "#e6e6fa",
     margin: "0.5%",
     color: "black",
-  },
-}));
+  };
+  const monsterStylesCard = {
+    borderColor: "Red"
+    backgroundColor: "#e6e6fa",
+    margin: "0.5%",
+    color: "black",
+  };
 
-export default function JobCard({ jobData }) {
-  const styles = useStyles();
-
-  return jobData.map(({ Title, Company, Location, Link }) => (
-    <Card className={styles.card}>
+  return jobData.map(({ Title, Company, Location, Link, WebsiteName }) => (
+    <Card
+      style={
+        { WebsiteName } === "Indeed" ? indeedStylesCard : monsterStylesCard
+      }
+    >
       <CardContent>
-        <Typography variant="h5" gutterBottom fontWeight="bold">
+        <Typography variant="h4" gutterBottom fontWeight="bold">
           {Title}
         </Typography>
         <Typography variant="h6" gutterBottom>
@@ -38,22 +49,3 @@ export default function JobCard({ jobData }) {
     </Card>
   ));
 }
-
-// return (
-//   <Card className={styles.card}>
-//     <CardContent>
-//       <Typography variant="h5" gutterBottom fontWeight="bold">
-//         Software Developer
-//       </Typography>
-//       <Typography variant="h6" gutterBottom>
-//         Apple Inc.
-//       </Typography>
-//       <Typography variant="h6" gutterBottom>
-//         San Jose, CA
-//       </Typography>
-//     </CardContent>
-//     <CardActions>
-//       <Button size="small">Click Here for this Job Posting</Button>
-//     </CardActions>
-//   </Card>
-// );
