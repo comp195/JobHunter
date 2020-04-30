@@ -6,6 +6,7 @@ import Typography from "@material-ui/core/Typography";
 import * as d3 from "d3";
 import monsterFile from "./csv/monster.csv";
 import indeedFile from "./csv/indeed.csv";
+import allFile from "./csv/allJobs.csv";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 // function Home() {
@@ -23,15 +24,17 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 function App() {
   // const styles = useStyles();
   const [data, setData] = useState([]);
-  const [indeed, setIndeed] = useState(true);
+  const [type, setType] = useState("");
 
   useEffect(() => {
-    if (indeed) {
+    if (type === "Indeed") {
       d3.csv(indeedFile).then(setData);
-    } else {
+    } else if (type === "Monster") {
       d3.csv(monsterFile).then(setData);
+    } else {
+      d3.csv(allFile).then(setData);
     }
-  }, [indeed]);
+  }, [type]);
 
   return (
     <Box>
@@ -40,42 +43,37 @@ function App() {
         <Typography gutterBottom variant="h1" align="center" color="inherit">
           Job Finder
         </Typography>
-        {/* <Container>
-          <JobCard jobData={data} />
-        </Container> */}
       </Box>
-      <Box>
+      <Box justifyContent="center">
         <Router>
-          <div>
+          <Box justifyContent="center">
             <nav>
               <ul>
                 <li>
-                  <Link to="/">Home</Link>
+                  <Link to="/" onClick={() => setType("All")}>
+                    Home
+                  </Link>
                 </li>
                 <li>
-                  <Link to="/Indeed" onClick={() => setIndeed(true)}>
+                  <Link to="/Indeed" onClick={() => setType("Indeed")}>
                     Indeed
                   </Link>
                 </li>
                 <li>
-                  <Link to="/Monster" onClick={() => setIndeed(false)}>
+                  <Link to="/Monster" onClick={() => setType("Monster")}>
                     Monster
                   </Link>
                 </li>
               </ul>
             </nav>
-            {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
             <Switch>
-              <Route path="/Indeed">
+              <Route path="/Indeed">{/* <JobCard jobData={data} /> */}</Route>
+              <Route path="/Monster">{/* <JobCard jobData={data} /> */}</Route>
+              <Route path="/">
                 <JobCard jobData={data} />
               </Route>
-              <Route path="/Monster">
-                <JobCard jobData={data} />
-              </Route>
-              <Route path="/"></Route>
             </Switch>
-          </div>
+          </Box>
         </Router>
       </Box>
     </Box>

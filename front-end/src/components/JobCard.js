@@ -4,32 +4,28 @@ import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-// import { makeStyles } from "@material-ui/core";
-
-// const useStyles = makeStyles((theme) => ({
-//   card: {},
-// }));
-
+import CardMedia from "@material-ui/core/CardMedia";
+import indeedImg from "../img/indeed.jpg";
+import monsterImg from "../img/monster.jpg";
 export default function JobCard({ jobData, color }) {
-  const indeedStylesCard = {
-    borderColor:"Blue",
+  const StylesCard = {
     backgroundColor: "#e6e6fa",
-    margin: "0.5%",
+    margin: "1%",
+    marginLeft: "26%",
     color: "black",
-  };
-  const monsterStylesCard = {
-    borderColor: "Red"
-    backgroundColor: "#e6e6fa",
-    margin: "0.5%",
-    color: "black",
+    border: "3px solid #e1e1f9",
+    width: "45%",
   };
 
-  return jobData.map(({ Title, Company, Location, Link, WebsiteName }) => (
-    <Card
-      style={
-        { WebsiteName } === "Indeed" ? indeedStylesCard : monsterStylesCard
-      }
-    >
+  return jobData.map(({ Title, Company, Location, Link, JobSource }) => (
+    <Card justify="center" style={StylesCard}>
+      <CardMedia
+        component="img"
+        alt={JobSource === " Indeed" ? "Indeed" : "Monster"}
+        height="70"
+        image={JobSource === " Indeed" ? indeedImg : monsterImg}
+        title={JobSource === " Indeed" ? "Indeed" : "Monster"}
+      />
       <CardContent>
         <Typography variant="h4" gutterBottom fontWeight="bold">
           {Title}
@@ -40,12 +36,11 @@ export default function JobCard({ jobData, color }) {
         <Typography variant="h6" gutterBottom>
           {Location}
         </Typography>
+        <Typography variant="h6" gutterBottom>
+          Pulled from {JobSource}.com
+        </Typography>
+        <Button href={Link}>Click Here for this Job Posting</Button>
       </CardContent>
-      <CardActions>
-        <Button size="small" href={Link}>
-          Click Here for this Job Posting
-        </Button>
-      </CardActions>
     </Card>
   ));
 }
