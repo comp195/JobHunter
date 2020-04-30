@@ -87,8 +87,8 @@ job_items = jobs_container.find_all('section', class_='card-content')
 # print(len(results))
 
 # Need to specify absolute path to work with scrape_all.py
-two_dir_up = path.abspath(path.join(__file__ ,"../.."))
-filename = two_dir_up + '/monster_com/jobs.csv'
+two_dir_up = path.abspath(path.join(__file__ ,"../../.."))
+filename = two_dir_up + '/front-end/src/csv/monster_jobs.csv'
 f = open(filename, "w")
 
 # No longer need headers
@@ -159,6 +159,6 @@ for i in job_items:
     f.write('\n')
 
 
-print('monster.com - Finished scraping data. Results were placed in /scrapers/monster.com/jobs.csv')
+print('monster.com - Finished scraping data. Results were placed in /front-end/src/csv/monster_jobs.csv')
 
 f.close()

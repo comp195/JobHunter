@@ -40,8 +40,8 @@ location = args.location
 cwd = os.path.dirname(os.path.realpath(__file__))
 indeed_path = (cwd + '/scrapers/indeed_com/indeed.py')
 monster_path = (cwd + '/scrapers/monster_com/monster.py')
-indeed_csv_path = (cwd + '/scrapers/indeed_com/jobs.csv')
-monster_csv_path = (cwd + '/scrapers/monster_com/jobs.csv')
+indeed_csv_path = (cwd + '/front-end/src/csv/indeed_jobs.csv')
+monster_csv_path = (cwd + '/front-end/src/csv/monster_jobs.csv')
 allJobs_csv_path = (cwd + '/front-end/src/csv/allJobs.csv') # Where both .csv files will be combined
 
 
