@@ -94,10 +94,17 @@ with open(allJobs_csv_path,'w') as target:
 # Re-write header to randomize
 header = "Title,Company,Location,Link,JobSource\n"
 
-with open(allJobs_csv_path) as f:
-    lines = f.readlines() #read
+with open(allJobs_csv_path) as f1, open(indeed_csv_path) as f2, open(monster_csv_path) as f3:
+    lines_f1 = f1.readlines() #read
+    lines_f2 = f2.readlines() #read
+    lines_f3 = f3.readlines() #read
 
-lines[0] = header # Write to line 1
+lines_f1[0] = header # Write to line 1
+lines_f2[0] = header # Write to line 1
+lines_f3[0] = header # Write to line 1
 
-with open(allJobs_csv_path, "w") as f:
-    f.writelines(lines) # Write back
+with open(allJobs_csv_path, "w") as f1, open(indeed_csv_path, "w") as f2, open(monster_csv_path, "w") as f3:
+    # Write back
+    f1.writelines(lines_f1)
+    f2.writelines(lines_f2)
+    f3.writelines(lines_f3)
