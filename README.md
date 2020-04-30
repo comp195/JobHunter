@@ -35,7 +35,8 @@ All of the scraped job data will be placed into its respective `jobs.csv` file. 
 
 
 ## How is the Website Hosted?
-Using a service called `Netlify`. The React code is pushed to a repository located here https://github.com/dvasavda/create-react-app-job-hunter-test and upon each push, Netlify (https://www.netlify.com) will build a new version of the website. It's almost like live CI/CD where a new build happens for each new push.
+Using a service called `Netlify`. Whenever new code is pushed to this repository on branch `master`, Netlify (https://www.netlify.com) will build a new version of the website. Netlify uses CI/CD to detect updates to the branch and will automatically update the webpage.
+
 
 ## Is the website Static or Dynamic? Is the data live or static?
 - The website is Static. Hosting a dynamic website with React will run the project into using paid web hosting services which is out of the scope for this. This project runs as a proof-of-concept that multiple job hunting websites can be aggregated into one. As a side note, the service can be created into a dynamic one as the code is fully prepared for it.
