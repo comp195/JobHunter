@@ -1,13 +1,13 @@
 import React from "react";
 import Card from "@material-ui/core/Card";
-import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import CardMedia from "@material-ui/core/CardMedia";
 import indeedImg from "../img/indeed.jpg";
 import monsterImg from "../img/monster.jpg";
-export default function JobCard({ jobData, color }) {
+
+export default function JobCard({ jobData }) {
   const StylesCard = {
     backgroundColor: "#e6e6fa",
     margin: "1%",
@@ -21,9 +21,9 @@ export default function JobCard({ jobData, color }) {
     <Card justify="center" style={StylesCard}>
       <CardMedia
         component="img"
-        alt={JobSource === " Indeed" ? "Indeed" : "Monster"}
         height="70"
         image={JobSource === " Indeed" ? indeedImg : monsterImg}
+        alt={JobSource === " Indeed" ? "Indeed" : "Monster"}
         title={JobSource === " Indeed" ? "Indeed" : "Monster"}
       />
       <CardContent>
