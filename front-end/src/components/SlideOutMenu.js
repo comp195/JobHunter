@@ -38,7 +38,7 @@ export default function SlideOutMenu() {
         {["", "Indeed", "Monster"].map((text, index) => (
           <ListItem button key={text} component={Link} to={"/" + text}>
             <ListItemIcon>
-              {index % 2 === 0 ? <HomeIcon /> : <WorkIcon />}
+              {index === 0 ? <HomeIcon /> : <WorkIcon />}
             </ListItemIcon>
             <ListItemText primary={text} />
           </ListItem>
