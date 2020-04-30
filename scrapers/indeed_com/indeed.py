@@ -79,8 +79,8 @@ results = soup.find_all('div', {'class': 'result'})
 
 #print len(results)
 # Need to specify absolute path to work with scrape_all.py
-two_dir_up = path.abspath(path.join(__file__ ,"../.."))
-filename = two_dir_up + '/indeed_com/jobs.csv'
+three_dir_up = path.abspath(path.join(__file__ ,"../../.."))
+filename = three_dir_up + '/front-end/src/csv/indeed_jobs.csv'
 f = open(filename, "w")
 
 # No longer need header as it is written by scrape_all.py
@@ -152,6 +152,6 @@ for i in results:
     f.write('\n')
 
 
-print('indeed.com - Finished scraping data. Results were placed in /scrapers/indeed.com/jobs.csv')
+print('indeed.com - Finished scraping data. Results were placed in /front-end/src/csv/indeed_jobs.csv')
 
 f.close()
