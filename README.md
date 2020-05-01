@@ -1,10 +1,10 @@
 # Job Hunter
 
-Aggregating multiple job hunting websites into one. Taking job hunting websites indeed.com and monster.com and placing it into one universal search engine.
+A website that aggregates multiple job hunting websites into one. Taking job hunting websites indeed.com and monster.com and placing it into one universal search engine.
 
 Created by Dharak Vasavda (d_vasavda@u.pacific.edu) and Nathan Luu (n_luu1@u.pacific.edu)
 
-# Link to App Website:
+# Link to App Website (Live Build):
 https://bit.ly/2VQZzfC
 
 #
@@ -19,14 +19,14 @@ https://bit.ly/2VQZzfC
 
 # Q and A:
 
-## How to Scrape All Job Data?
+## How to scrape all job data?
 
 1. Go to the root of the project dir
 2. Run the example command:
     `python3 scrape_all.py --searchterm "computer science" --location '95050'`
 
 
-## Where is all of the Scraped Job Data scored?
+## Where is all of the scraped job data stored?
 All job data can be found under `/front-end/src/csv/`
 
 
@@ -34,7 +34,7 @@ All job data can be found under `/front-end/src/csv/`
 All of the scraped job data will be placed into its respective `jobs.csv` file. From there, React framework will parse the lines of data in `jobs.csv` and display the results in its own webpage interface.
 
 
-## How is the Website Hosted?
+## How is the website hosted?
 Using a service called `Netlify`. Whenever new code is pushed to this repository on branch `master`, Netlify (https://www.netlify.com) will build a new version of the website. Netlify uses CI/CD to detect updates to the branch and will automatically update the webpage.
 
 

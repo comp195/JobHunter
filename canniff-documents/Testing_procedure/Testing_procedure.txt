@@ -1,6 +1,9 @@
+This file contains documentation for how tests were completed in the project
+
+
 Tests are located in the file test_results.xlsx
 
-The test results are divided into two components:
+The tests are divided into two components:
 - Data scraping component
 - React framework/end-user component
 
