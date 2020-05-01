@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Box } from "@material-ui/core/";
 import SlideOutMenu from "./components/SlideOutMenu";
+import SearchBar from "./components/SearchBar";
 import JobCard from "./components/JobCard";
 import Typography from "@material-ui/core/Typography";
 import * as d3 from "d3";
@@ -28,7 +29,7 @@ function App() {
 
   return (
     <Box>
-      <Box>
+      <Box alignItems="center">
         <Router>
           <Box>
             <SlideOutMenu />
@@ -40,6 +41,7 @@ function App() {
             >
               Job Finder
             </Typography>
+            <SearchBar />
             <Switch>
               <Route path="/Indeed">
                 <JobCard jobData={indeed} />
